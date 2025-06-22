@@ -1,7 +1,25 @@
-<h1>input url</h1>
-<form id="form">
-    <input type="text" name="long_url">
-    <input type="submit" value="Submit">
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vapor URL</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>VAPOR URL</h1>
+        <form id="form">
+            <input type="text" name="long_url" placeholder="ENTER YOUR URL HERE..." required>
+            <input type="submit" value="MAKE IT SHORT">
+        </form>
 
-<script src="script.js"></script>
+        <div id="result" style="display:none;">
+            <p>✨ SUCCESS! YOUR VAPOR URL IS READY ✨</p>
+            <span id="short-url"></span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

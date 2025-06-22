@@ -1,4 +1,3 @@
-console.log("script.js loaded!");
 
 function logSubmit(event) {
     console.log("form submitted!");
@@ -16,7 +15,9 @@ function logSubmit(event) {
     .then(data => {
     console.log('server responded:', data);
     event.target.reset();
-    const shortUrl = `http://localhost:3000/${data.short_code}`;
+    const shortUrl = `https://vapor-url.vercel.app/${data.short_code}`;
+    document.getElementById('short-url').textContent = shortUrl;
+    document.getElementById('result').style.display = 'block';
     console.log(shortUrl);
 });
  
