@@ -1,4 +1,3 @@
-import 'dotenv/config';
 import { nanoid } from 'nanoid';
 import express from 'express';
 import { createClient } from '@supabase/supabase-js';
