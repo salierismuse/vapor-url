@@ -1,16 +1,7 @@
 {
-  "functions": {
-    "api/app.mjs": {
-      "runtime": "nodejs20.x"
-    }
-  },
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api/app"
-    },
-    {
-      "source": "/:code",
+      "source": "/(.*)",
       "destination": "/api/app"
     }
   ]

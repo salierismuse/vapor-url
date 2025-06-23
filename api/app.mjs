@@ -6,9 +6,15 @@ const app = express();
 const port = 3000;
 
 const site = process.env.SITE_NAME;
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_ANON_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
+
+let supabase;
+
+function getSupabase() {
+  if (!supabase) {
+    supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY);
+  }
+  return supabase;
+}
 
 app.use(express.static('public'), express.json());
 
@@ -17,7 +23,7 @@ function validUrl(url) {
 }
 
 async function getOldUrl(req, res, code) {
-  const { data, error } = await supabase
+  const { data, error } = await getSupabase()
     .from('links')
     .select('original_url')
     .eq('code', code)
@@ -32,14 +38,14 @@ async function getOldUrl(req, res, code) {
 
 async function insertCode(url, res) {
   var code = nanoid(6);
-  const { data, error } = await supabase
+  const { data, error } = await getSupabase()
     .from('links')
     .select('code')
     .eq('code', code)
     .single();
 
   if (error || !data) {
-    const { error: insertError } = await supabase
+    const { error: insertError } = await getSupabase()
       .from('links')
       .insert({ code: code, original_url: url });
     
