@@ -1,7 +1,11 @@
 {
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/api/(.*)",
+      "destination": "/api/app"
+    },
+    {
+      "source": "/:code", 
       "destination": "/api/app"
     }
   ]
